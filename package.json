@@ -1,0 +1,49 @@
+{
+  "name": "typescript-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start",
+    "build": "webpack",
+    "build:watch": "webpack --watch",
+    "build:prod": "webpack -p",
+    "start": "webpack-dev-server",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "tslint --fix --project ./tsconfig.json",
+      "git add"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rxjs": "^6.2.0"
+  },
+  "devDependencies": {
+    "@types/jasmine": "latest",
+    "awesome-typescript-loader": "latest",
+    "husky": "latest",
+    "inline-source-map": "latest",
+    "jasmine-core": "latest",
+    "jasmine-ts": "latest",
+    "karma": "latest",
+    "karma-chrome-launcher": "latest",
+    "karma-cli": "latest",
+    "karma-jasmine": "latest",
+    "karma-spec-reporter": "latest",
+    "karma-typescript": "latest",
+    "lint-staged": "latest",
+    "ts-loader": "latest",
+    "ts-node": "latest",
+    "tslint": "latest",
+    "tslint-sonarts": "latest",
+    "typescript": "latest",
+    "webpack": "latest",
+    "webpack-cli": "latest",
+    "webpack-dev-server": "latest"
+  }
+}
