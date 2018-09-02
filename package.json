@@ -1,5 +1,5 @@
 {
-  "name": "typescript-starter",
+  "name": "interactive-javascript-console",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -21,11 +21,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "codemirror": "^5.40.0",
     "rxjs": "^6.2.0"
   },
   "devDependencies": {
+    "@types/codemirror": "0.0.60",
     "@types/jasmine": "latest",
     "awesome-typescript-loader": "latest",
+    "css-loader": "^1.0.0",
     "husky": "latest",
     "inline-source-map": "latest",
     "jasmine-core": "latest",
@@ -37,6 +40,9 @@
     "karma-spec-reporter": "latest",
     "karma-typescript": "latest",
     "lint-staged": "latest",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
     "ts-loader": "latest",
     "ts-node": "latest",
     "tslint": "latest",
