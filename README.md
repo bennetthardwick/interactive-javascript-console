@@ -1,4 +1,4 @@
-# 
+# Interactive JavaScript Console
 An interactive JavaScript console to use on your blog. Inspired by [thebookofshaders.com](https://thebookofshaders.com/).
 
 ## Getting Started
