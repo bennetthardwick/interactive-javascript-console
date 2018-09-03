@@ -4,16 +4,74 @@ import "./style.scss";
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    console.log("loaded");
+		function transformTabs(text: string) {
+
+			function countTabs(text: string): number | undefined {
+				 let count = 0;
+				 for (let i = 0; i < text.length; i++) {
+					 if (text[i] === '\t' || text[i] === '\s') {
+						 count++;
+					 } else break;
+				 }
+				 if (count === text.length - 1) return undefined;
+				 else return count;
+			}
+
+			console.log(text.split('\n'))
+
+			const array = text.split('\n')
+												.filter(x => !!x)
+												.map(x => countTabs(x))
+												.filter(x => x !== undefined)
+
+			console.log(array);
+
+			const tabCount = Math.min.apply(
+				null, 
+				array
+			);
+			
+			console.log(tabCount);
+
+		}
 
     Array.from(document.querySelectorAll("interactive-console")).forEach((interactive) => {
 
         console.log("wow");
 
-        const textarea = interactive.querySelector("textarea");
-        const execute = interactive.querySelector("button.execute") as HTMLButtonElement;
-        const reset = interactive.querySelector("button.reset") as HTMLButtonElement;
-        const output = interactive.querySelector("div.output") as HTMLDivElement;
+				const controls = document.createElement('div');
+				controls.className = 'controls';
+
+				const execute = document.createElement('button');
+				execute.innerText = 'Run';
+				execute.className = 'execute';
+
+				const reset = document.createElement('button');
+				reset.innerText = 'Clear Output';
+				reset.className = 'reset';
+
+				controls.appendChild(execute);
+				controls.appendChild(reset);
+
+				const code = document.createElement('div');
+				code.className = 'code';
+
+        const textarea = document.createElement('textarea');
+
+				transformTabs((interactive as HTMLElement).innerHTML);
+
+				textarea.innerHTML = (interactive as HTMLElement).innerHTML.trim(); 
+
+				code.appendChild(textarea);
+
+				const output = document.createElement('div');
+				output.className = 'output';
+
+				(interactive as HTMLElement).innerHTML = '';
+
+				interactive.appendChild(controls);
+				interactive.appendChild(code);
+				interactive.appendChild(output);
 
         if (!textarea) { throw Error("Could not find text area!"); }
         if (!execute) { throw Error("Could not find execute button!"); }
