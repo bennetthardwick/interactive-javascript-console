@@ -6,15 +6,12 @@ An interactive JavaScript console to use on your blog. Inspired by [thebookofsha
 To install the editor, you first have to include the js file `dist/bundle.js` in the head of your website, and then add the following wherever you want an interactive code sample:
 
 ```html
-<interactive-console style="display: none">
-    <div class="controls">
-        <button class="execute">Execute</button>
-        <button class="reset">Clear Output</button>
-    </div>
-    <div class="code">
-        <textarea>console.log('hey')</textarea>
-    </div>
-    <div class="output"></div>
+<interactive-console>
+    console.log('hey');
+    function hello() {
+        console.log('hi');
+    }
+    setTimeout(hello, 600);
 </interactive-console>
 ```
 
