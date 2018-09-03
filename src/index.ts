@@ -132,7 +132,7 @@ export class InteractiveConsole {
 
     this.frame.contentWindow!.alert = this.alert;
 
-    this.execute.addEventListener("click", this.run);
+    this.execute.addEventListener("click", () => this.run());
 
     this.reset.addEventListener("click", () => {
       this.output.innerHTML = "";
