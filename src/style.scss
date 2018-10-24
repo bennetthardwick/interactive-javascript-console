@@ -1,18 +1,38 @@
 @import '../node_modules/codemirror/lib/codemirror.css';
 @import '../node_modules/codemirror/theme/gruvbox-dark.css';
 
+@import '../node_modules/font-awesome/css/font-awesome.css';
+
 interactive-console {
 
     display: none;
     width: 100%;
+    position: relative;
+
+    &:hover {
+      .controls {
+        opacity: 1;
+      }
+    }
 
     .controls {
-        background: #1D2021;
-        border-bottom: solid 1px #080808;
+
+      position: absolute;
+      left: -35px;
+      display: flex;
+      flex-direction: column;
+
+      transition: opacity 0.2s;
+
+      opacity: 0;
+
+      &:hover{
+        opacity: 1;
+      }
 
         button {
-            background-color: #1D2021;
-            color: #EBDBB2;
+            background: none;
+            color: rgba(#1D2021, 0.5);
             border: none;
             outline: none;
             font-size: 14px;
@@ -20,14 +40,14 @@ interactive-console {
             padding: 8px 13px;
             cursor: pointer;
 
-            transition: background-color 0.2s;
+            transition: color 0.2s;
 
             &:hover {
-                background-color: #282828;
+                color: rgba(#1D2021, 0.8);
             }
 
             &:active {
-                background-color: #3C3836;
+                color: rgba(#1D2021, 1.0);
             }
 
         }
@@ -55,6 +75,10 @@ interactive-console {
         border: solid 3px #282828;
         max-height: 230px;
         overflow-y: auto;
+
+        &:empty {
+          display: none;
+        }
 
         div {
             border-bottom: solid rgba(#282828, 0.2) 1px;

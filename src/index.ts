@@ -42,15 +42,20 @@ document.addEventListener("DOMContentLoaded", () => {
       controls.className = "controls";
 
       const execute = document.createElement("button");
-      execute.innerText = "Run";
+      execute.innerHTML = '<i class="fa fa-play-circle"></i>';
       execute.className = "execute";
 
       const reset = document.createElement("button");
-      reset.innerText = "Clear Output";
+      reset.innerHTML = '<i class="fa fa-times"></i>';
       reset.className = "reset";
+
+      const original = document.createElement("button");
+      original.innerHTML = '<i class="fa fa-refresh"></i>';
+      original.className = "original";
 
       controls.appendChild(execute);
       controls.appendChild(reset);
+      controls.appendChild(original);
 
       const code = document.createElement("div");
       code.className = "code";
@@ -89,8 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       (interactive as HTMLElement).style.display = "block";
 
-      const c = new InteractiveConsole(textarea, execute, reset, output, document);
-      c.run();
+      // tslint:disable-next-line no-unused-expression
+      new InteractiveConsole(textarea, execute, reset, original, output, document);
+
     },
   );
 });
@@ -108,10 +114,13 @@ export class InteractiveConsole {
   private editor: CodeMirror.Editor;
   private frame: HTMLIFrameElement;
 
+  private originalText = "";
+
   constructor(
     private readonly textarea: HTMLTextAreaElement,
     private readonly execute: HTMLButtonElement,
     private readonly reset: HTMLButtonElement,
+    private readonly original: HTMLButtonElement,
     private readonly output: HTMLDivElement,
     private readonly document: Document,
   ) {
@@ -119,6 +128,8 @@ export class InteractiveConsole {
       lineNumbers: true,
       theme: "gruvbox-dark",
     });
+
+    this.originalText = this.editor.getValue();
 
     this.frame = this.document.createElement("iframe");
     this.frame.style.display = "none";
@@ -133,6 +144,8 @@ export class InteractiveConsole {
     this.frame.contentWindow!.alert = this.alert;
 
     this.execute.addEventListener("click", () => this.run());
+
+    this.original.addEventListener("click", () => this.resetToOriginal());
 
     this.reset.addEventListener("click", () => {
       this.output.innerHTML = "";
@@ -163,6 +176,10 @@ export class InteractiveConsole {
     });
   }
 
+  private resetToOriginal(): void {
+    this.editor.setValue(this.originalText);
+  }
+
   private error(log: string): void {
     this.resultToConsole({
       log,
@@ -184,10 +201,10 @@ export class InteractiveConsole {
         case "return":
           return "&nbsp;";
         case "error":
-          return "⮾";
+          return '<i class="fa fa-exclamation-circle" aria-hidden="true"></i>';
         case "log":
         default:
-          return "🛈";
+          return '<i class="fa fa-info" aria-hidden="true"></i>';
       }
     }
 

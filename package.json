@@ -22,6 +22,7 @@
   "license": "ISC",
   "dependencies": {
     "codemirror": "^5.40.0",
+    "font-awesome": "^4.7.0",
     "rxjs": "^6.2.0"
   },
   "devDependencies": {
@@ -29,6 +30,8 @@
     "@types/jasmine": "latest",
     "awesome-typescript-loader": "latest",
     "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
+    "fontawesome": "^4.7.2",
     "husky": "latest",
     "inline-source-map": "latest",
     "jasmine-core": "latest",
@@ -48,6 +51,7 @@
     "tslint": "latest",
     "tslint-sonarts": "latest",
     "typescript": "latest",
+    "url-loader": "^1.1.2",
     "webpack": "latest",
     "webpack-cli": "latest",
     "webpack-dev-server": "latest"
