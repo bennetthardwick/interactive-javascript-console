@@ -1,5 +1,5 @@
 # Interactive JavaScript Console
-An interactive JavaScript console to use on your blog. Inspired by [thebookofshaders.com](https://thebookofshaders.com/).
+An interactive JavaScript console to use on your blog. Inspired by [thebookofshaders.com](https://thebookofshaders.com/). View it in action [here](https://bennetthardwick.com/2018/09/03/interactive-javascript-console-for-jekyll.html)
 
 ## Getting Started
 
